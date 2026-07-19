@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ParchiBook — WhatsApp order to bill, in one tap</title>
+  <meta name="description" content="ParchiBook turns a kirana shop's WhatsApp orders into itemized bills, delivery lists and khata entries in one tap. Rs 399/mo.">
+  <meta name="theme-color" content="#16A34A">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="ParchiBook home">
+    <span class="nav__mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="28" height="28" role="img" aria-label="ParchiBook logo">
+        <rect x="4" y="3" width="20" height="26" rx="2.5" fill="#16A34A"/>
+        <rect x="8" y="7" width="20" height="22" rx="2.5" fill="#FBFAF5" stroke="#14201A" stroke-width="1.4"/>
+        <line x1="12" y1="13" x2="24" y2="13" stroke="#14201A" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="12" y1="17.5" x2="24" y2="17.5" stroke="#14201A" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="12" y1="22" x2="20" y2="22" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="nav__name">ParchiBook</span>
+  </a>
+  <div class="nav__links">
+    <a href="#problem">Problem</a>
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+  </div>
+  <a href="#pricing" class="btn btn--sm nav__cta">Start free</a>
+</nav>
+
+<main id="top">
+
+  <!-- 1. HERO -->
+  <header class="hero">
+    <div class="hero__copy">
+      <p class="eyebrow"><span class="eyebrow__dot"></span> For kirana &amp; grocery shops</p>
+      <h1 class="hero__title">WhatsApp order to bill,<br><span class="hl">in one tap.</span></h1>
+      <p class="hero__lede">
+        Your customers already send orders on WhatsApp. Right now you copy each one onto a paper
+        <em>parchi</em>, do the maths in your head, and hope the diary is up to date.
+        ParchiBook turns the chat itself into an itemized bill, a picking list, and a khata entry.
+      </p>
+      <div class="hero__actions">
+        <a href="#pricing" class="btn btn--lg">Make my first bill</a>
+        <a href="#how" class="btn btn--ghost btn--lg">See how it works</a>
+      </div>
+      <p class="hero__meta">Rs 399/mo &middot; No new app for customers &middot; Works in Hindi, English &amp; Hinglish</p>
+    </div>
+
+    <!-- SIGNATURE: chat -> bill transformation widget -->
+    <div class="hero__demo" id="demo">
+      <div class="demo" aria-label="Interactive demo: a WhatsApp order turning into a bill">
+        <div class="demo__stage">
+          <!-- chat side -->
+          <div class="chat" aria-hidden="false">
+            <div class="chat__head">
+              <span class="chat__avatar">SK</span>
+              <span class="chat__who">Sunita Kulkarni <small>online</small></span>
+            </div>
+            <div class="chat__body">
+              <div class="bubble bubble--in">
+                <span class="bubble__line">2 kg aata</span>
+                <span class="bubble__line">1 doodh</span>
+                <span class="bubble__line">Maggi 4 packet</span>
+                <span class="bubble__line">chai patti 250g</span>
+                <span class="bubble__line">2 sabun</span>
+                <span class="bubble__time">6:41 pm &check;&check;</span>
+              </div>
+              <div class="bubble bubble--in bubble--short">
+                <span class="bubble__line">bhaiya ghar bhej dena</span>
+                <span class="bubble__time">6:41 pm &check;&check;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- printed bill side -->
+          <div class="receipt" aria-hidden="false">
+            <div class="receipt__perf" aria-hidden="true"></div>
+            <div class="receipt__head">
+              <strong>SHREE GANESH KIRANA</strong>
+              <span>Kothrud, Pune &middot; Bill #2041</span>
+            </div>
+            <div class="receipt__rows" id="receiptRows"><!-- filled by app.js --></div>
+            <div class="receipt__total">
+              <span>TOTAL</span>
+              <span id="receiptTotal">Rs 0</span>
+            </div>
+            <div class="receipt__khata">Posted to Sunita's khata &middot; New balance <b id="receiptBal">Rs 0</b></div>
+            <div class="receipt__perf receipt__perf--btm" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <button class="demo__btn" id="demoBtn" type="button">
+          <span class="demo__btn-txt">Turn this chat into a bill</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h12M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="demo__hint" id="demoHint">Tap to parse &amp; price the order</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. THE PROBLEM -->
+  <section class="section problem" id="problem">
+    <div class="section__head">
+      <p class="eyebrow"><span class="eyebrow__dot"></span> The problem</p>
+      <h2 class="section__title">A busy shop runs on WhatsApp, a diary, and memory. All three leak.</h2>
+    </div>
+    <div class="problem__grid">
+      <article class="leak">
+        <span class="leak__num">01</span>
+        <h3>Orders scatter across chats</h3>
+        <p>Thirty messages come in during the evening rush. You scroll, copy each onto a paper parchi, and one order quietly gets missed.</p>
+      </article>
+      <article class="leak">
+        <span class="leak__num">02</span>
+        <h3>Pricing lives in your head</h3>
+        <p>Rates change with the mandi. You total five items from memory at the counter, undercharge a little on each, and never notice the slow bleed.</p>
+      </article>
+      <article class="leak">
+        <span class="leak__num">03</span>
+        <h3>The khata falls behind</h3>
+        <p>&ldquo;Likh dena&rdquo; means it should go in the diary. By closing time you can&rsquo;t remember who took what on udhaar, so the balance is a guess.</p>
+      </article>
+      <article class="leak">
+        <span class="leak__num">04</span>
+        <h3>Delivery is a scramble</h3>
+        <p>The delivery boy leaves with a fistful of parchis in no order, doubles back across the same gully twice, and forgets one house.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3. THE INSIGHT -->
+  <section class="section insight" id="insight">
+    <div class="insight__inner">
+      <p class="eyebrow eyebrow--light"><span class="eyebrow__dot"></span> The insight</p>
+      <p class="insight__quote">
+        The order is <span class="hl-dark">already typed.</span> The shopkeeper is re-doing, by hand,
+        work the customer already finished.
+      </p>
+      <p class="insight__sub">
+        So don&rsquo;t build another ordering app nobody will download. Read the WhatsApp message that&rsquo;s
+        already there, match each line to your saved rates, and let the parchi, the bill, and the khata
+        write themselves.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4. HOW IT WORKS -->
+  <section class="section how" id="how">
+    <div class="section__head">
+      <p class="eyebrow"><span class="eyebrow__dot"></span> How it works</p>
+      <h2 class="section__title">Paste the chat. Get a bill. Done in four steps.</h2>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <span class="step__num">1</span>
+        <h3>Paste the order</h3>
+        <p>Copy the customer&rsquo;s WhatsApp message and paste it in. ParchiBook reads it line by line &mdash; &ldquo;2 kg aata&rdquo;, &ldquo;Maggi 4 packet&rdquo;.</p>
+      </li>
+      <li class="step">
+        <span class="step__num">2</span>
+        <h3>It matches your catalog</h3>
+        <p>Each line is matched to your saved items by name or alias &mdash; case doesn&rsquo;t matter, spelling need not be exact &mdash; and priced from your rate.</p>
+      </li>
+      <li class="step">
+        <span class="step__num">3</span>
+        <h3>You fix any misses</h3>
+        <p>Anything it can&rsquo;t match is flagged. Tap once to add the item and rate; next time it&rsquo;s recognised on its own.</p>
+      </li>
+      <li class="step">
+        <span class="step__num">4</span>
+        <h3>Bill, list &amp; khata</h3>
+        <p>Out comes an itemized bill for the customer, a delivery-run list for the boy, and the amount is posted to that customer&rsquo;s khata.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 5. FEATURES -->
+  <section class="section features" id="features">
+    <div class="section__head">
+      <p class="eyebrow"><span class="eyebrow__dot"></span> What it does</p>
+      <h2 class="section__title">Everything the parchi used to do, minus the pen.</h2>
+    </div>
+    <div class="feat-grid">
+      <article class="feat">
+        <div class="feat__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 5h16M4 10h16M4 15h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M15.5 18.5l2 2 4-4.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Line-by-line parsing</h3>
+        <p>Reads a pasted WhatsApp order one line at a time, pulling out quantity, unit and item name.</p>
+      </article>
+      <article class="feat">
+        <div class="feat__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="7" cy="7" r="3.2" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="17" cy="17" r="3.2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M9.3 9.3l5.4 5.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Smart catalog match</h3>
+        <p>Matches each line to your items by name or alias &mdash; case-insensitive and forgiving of typos &mdash; then prices it from your saved rate.</p>
+      </article>
+      <article class="feat">
+        <div class="feat__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M12 7v6M12 16.5v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Unmatched-line flags</h3>
+        <p>Anything unfamiliar is set aside with a one-tap &ldquo;add to catalog&rdquo;, so no line is silently dropped.</p>
+      </article>
+      <article class="feat">
+        <div class="feat__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Itemized bill</h3>
+        <p>A clean bill with rates, quantities and total &mdash; ready to send back on WhatsApp or print for delivery.</p>
+      </article>
+      <article class="feat">
+        <div class="feat__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 6h11l-1.2 7H6.2L5 4H3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="18" r="1.4" fill="currentColor"/><circle cx="14" cy="18" r="1.4" fill="currentColor"/><path d="M18 6l2 2 3-3.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Delivery-run list</h3>
+        <p>Every order for the round rolls up into one picking-and-delivery list, so the boy packs once and doesn&rsquo;t double back.</p>
+      </article>
+      <article class="feat">
+        <div class="feat__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 5h16v14H4z" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.6"/><path d="M8 13h4M8 16h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Auto-posted khata</h3>
+        <p>The bill total drops straight onto the customer&rsquo;s running balance &mdash; no separate diary entry, no end-of-day guessing.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 6. PRODUCT PREVIEW -->
+  <section class="section preview" id="preview">
+    <div class="section__head section__head--center">
+      <p class="eyebrow"><span class="eyebrow__dot"></span> Inside ParchiBook</p>
+      <h2 class="section__title">Your whole evening rush, on one screen.</h2>
+    </div>
+
+    <div class="screen" role="img" aria-label="ParchiBook dashboard mock-up showing today's orders, unmatched lines, and outstanding khata">
+      <div class="screen__bar">
+        <span class="screen__dot"></span><span class="screen__dot"></span><span class="screen__dot"></span>
+        <span class="screen__url">app.parchibook.in &middot; Shree Ganesh Kirana</span>
+      </div>
+      <div class="screen__body">
+        <div class="dash">
+          <!-- stat cards -->
+          <div class="stat">
+            <span class="stat__label">Today&rsquo;s orders</span>
+            <span class="stat__val">37</span>
+            <span class="stat__foot stat__foot--up">+8 vs yesterday</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">Unmatched lines</span>
+            <span class="stat__val stat__val--warn">3</span>
+            <span class="stat__foot">Need a quick add</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">Outstanding khata</span>
+            <span class="stat__val">Rs 41,280</span>
+            <span class="stat__foot">Across 22 customers</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">Billed today</span>
+            <span class="stat__val">Rs 18,940</span>
+            <span class="stat__foot stat__foot--up">62% delivered</span>
+          </div>
+
+          <!-- orders table -->
+          <div class="panel panel--orders">
+            <div class="panel__head">
+              <h3>Tonight&rsquo;s orders</h3>
+              <span class="tag tag--live">live</span>
+            </div>
+            <table class="otable">
+              <thead>
+                <tr><th>Customer &amp; area</th><th>Items</th><th class="ta-r">Bill</th><th class="ta-r">Status</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Sunita Kulkarni</b><small>Kothrud</small></td>
+                  <td>5 items</td>
+                  <td class="ta-r mono">Rs 486</td>
+                  <td class="ta-r"><span class="pill pill--ok">Billed</span></td>
+                </tr>
+                <tr>
+                  <td><b>Imran Shaikh</b><small>Kondhwa</small></td>
+                  <td>8 items</td>
+                  <td class="ta-r mono">Rs 1,124</td>
+                  <td class="ta-r"><span class="pill pill--go">Out for delivery</span></td>
+                </tr>
+                <tr class="otable__flag">
+                  <td><b>Meena Deshpande</b><small>Karve Nagar</small></td>
+                  <td>6 items <span class="tag tag--warn">1 unmatched</span></td>
+                  <td class="ta-r mono">Rs 742</td>
+                  <td class="ta-r"><span class="pill pill--wait">Review</span></td>
+                </tr>
+                <tr>
+                  <td><b>Rakesh Yadav</b><small>Warje</small></td>
+                  <td>3 items</td>
+                  <td class="ta-r mono">Rs 268</td>
+                  <td class="ta-r"><span class="pill pill--ok">Billed</span></td>
+                </tr>
+                <tr>
+                  <td><b>Fatima Sayyed</b><small>Kothrud</small></td>
+                  <td>11 items</td>
+                  <td class="ta-r mono">Rs 2,050</td>
+                  <td class="ta-r"><span class="pill pill--go">Out for delivery</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- khata side panel -->
+          <div class="panel panel--khata">
+            <div class="panel__head"><h3>Top khata balances</h3></div>
+            <ul class="khata">
+              <li><span class="khata__nm">Fatima Sayyed<small>Kothrud</small></span><span class="khata__amt mono">Rs 6,340</span></li>
+              <li><span class="khata__nm">Imran Shaikh<small>Kondhwa</small></span><span class="khata__amt mono">Rs 4,890</span></li>
+              <li><span class="khata__nm">Rakesh Yadav<small>Warje</small></span><span class="khata__amt mono">Rs 3,120</span></li>
+              <li><span class="khata__nm">Meena Deshpande<small>Karve Nagar</small></span><span class="khata__amt mono">Rs 2,780</span></li>
+            </ul>
+            <div class="khata__note">Send reminders on WhatsApp &rarr;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. PRICING -->
+  <section class="section pricing" id="pricing">
+    <div class="price-card">
+      <div class="price-card__l">
+        <p class="eyebrow"><span class="eyebrow__dot"></span> Pricing</p>
+        <h2 class="price-card__title">One flat plan. No per-bill charge.</h2>
+        <p class="price-card__roi">
+          Recover it on day one. If clearer pricing and a khata that never forgets saves you just
+          <b>Rs 15 a day</b> in undercharges and missed udhaar, ParchiBook has already paid for itself &mdash;
+          with the delivery time saved on top.
+        </p>
+        <ul class="price-card__list">
+          <li>Unlimited orders, bills &amp; khata entries</li>
+          <li>Your full catalog with aliases &amp; rates</li>
+          <li>Delivery-run lists every evening</li>
+          <li>Works on the phone you already own</li>
+        </ul>
+      </div>
+      <div class="price-card__r">
+        <span class="price-card__amt"><sup>Rs</sup>399</span>
+        <span class="price-card__per">per month</span>
+        <a href="#" class="btn btn--lg btn--block" aria-label="Start ParchiBook free for 14 days (demo)">Start 14 days free</a>
+        <p class="price-card__fine">No card needed &middot; Cancel anytime</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. WHO IT'S FOR + FAQ -->
+  <section class="section audience" id="faq">
+    <div class="audience__grid">
+      <div class="audience__who">
+        <p class="eyebrow"><span class="eyebrow__dot"></span> Who it&rsquo;s for</p>
+        <h2 class="section__title">Built for the counter, not the boardroom.</h2>
+        <p>ParchiBook is for the kirana and grocery shop owner who takes orders on WhatsApp, delivers around the neighbourhood, and keeps a khata for regulars. If your day already looks like that, nothing new to learn &mdash; just paste and bill.</p>
+        <ul class="who-tags">
+          <li>Kirana stores</li>
+          <li>Grocery &amp; general stores</li>
+          <li>Dairy &amp; provisions</li>
+          <li>Home-delivery shops</li>
+        </ul>
+      </div>
+      <div class="faq">
+        <details class="qa" open>
+          <summary>Do my customers need to install anything?</summary>
+          <p>No. They keep ordering on WhatsApp exactly as they do now. ParchiBook only sits on your side, turning their message into a bill.</p>
+        </details>
+        <details class="qa">
+          <summary>What if it can&rsquo;t read an item?</summary>
+          <p>That line is flagged, not dropped. You tap once to add the item and its rate; from then on it&rsquo;s matched automatically &mdash; the more you use it, the smarter your catalog gets.</p>
+        </details>
+        <details class="qa">
+          <summary>Does it work in Hindi and Hinglish?</summary>
+          <p>Yes. It reads the way your customers actually type &mdash; &ldquo;2 kg aata&rdquo;, &ldquo;doodh 1&rdquo;, &ldquo;chai patti 250g&rdquo; &mdash; and matches on names and aliases you set in your own words.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 9. FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="nav__mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="24" height="24"><rect x="4" y="3" width="20" height="26" rx="2.5" fill="#16A34A"/><rect x="8" y="7" width="20" height="22" rx="2.5" fill="#FBFAF5" stroke="#14201A" stroke-width="1.4"/><line x1="12" y1="13" x2="24" y2="13" stroke="#14201A" stroke-width="1.4" stroke-linecap="round"/><line x1="12" y1="17.5" x2="24" y2="17.5" stroke="#14201A" stroke-width="1.4" stroke-linecap="round"/><line x1="12" y1="22" x2="20" y2="22" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </span>
+      <div>
+        <strong>ParchiBook</strong>
+        <span>WhatsApp order to bill, in one tap.</span>
+      </div>
+    </div>
+    <div class="footer__meta">
+      <p>A <b>KARYA studio</b> build</p>
+      <p><a href="mailto:sreeni.nintendo@gmail.com">sreeni.nintendo@gmail.com</a></p>
+    </div>
+  </div>
+  <p class="footer__fine">&copy; 2026 ParchiBook &middot; Rs 399/mo &middot; Made for Indian kirana shops.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
