@@ -1,20 +1,138 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ParchiBook — WhatsApp order to bill, in one tap</title>
-  <meta name="description" content="ParchiBook turns a kirana shop's WhatsApp orders into itemized bills, delivery lists and khata entries in one tap. Rs 399/mo.">
+  <title>ParchiBook — kirana billing app for WhatsApp orders</title>
+  <meta name="description" content="Turn WhatsApp orders into itemized bills, delivery lists and shop khata in one tap. ParchiBook is the kirana billing app for grocery shops — see how it works.">
+  <meta name="keywords" content="kirana billing app, WhatsApp order to bill, grocery order management, shop khata, retail billing India">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="https://sreenivas-sadhu-prabhakara.github.io/parchibook-site/">
   <meta name="theme-color" content="#16A34A">
+  <meta name="author" content="KARYA">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="KARYA">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:title" content="ParchiBook — kirana billing app for WhatsApp orders">
+  <meta property="og:description" content="Turn WhatsApp orders into itemized bills, delivery lists and shop khata in one tap. The kirana billing app built for Indian grocery shops.">
+  <meta property="og:url" content="https://sreenivas-sadhu-prabhakara.github.io/parchibook-site/">
+  <meta property="og:image" content="https://sreenivas-sadhu-prabhakara.github.io/parchibook-site/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ParchiBook — WhatsApp order to bill, in one tap. A KARYA build.">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ParchiBook — kirana billing app for WhatsApp orders">
+  <meta name="twitter:description" content="Turn WhatsApp orders into itemized bills, delivery lists and shop khata in one tap. Built for Indian grocery shops.">
+  <meta name="twitter:image" content="https://sreenivas-sadhu-prabhakara.github.io/parchibook-site/og.png">
+
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="https://sreenivas-sadhu-prabhakara.github.io/parchibook-site/og.png">
   <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "KARYA",
+        "url": "https://kaarya-bench.pages.dev/",
+        "email": "sreeni.nintendo@gmail.com"
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://sreenivas-sadhu-prabhakara.github.io/parchibook-site/",
+        "name": "ParchiBook",
+        "inLanguage": "en-IN"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "ParchiBook",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "https://sreenivas-sadhu-prabhakara.github.io/parchibook-site/",
+        "image": "https://sreenivas-sadhu-prabhakara.github.io/parchibook-site/og.png",
+        "description": "Kirana billing app that turns WhatsApp orders into itemized bills, delivery lists and shop khata entries in one tap.",
+        "inLanguage": ["en-IN", "hi-IN"],
+        "areaServed": { "@type": "Country", "name": "India" },
+        "audience": { "@type": "BusinessAudience" },
+        "provider": { "@type": "Organization", "name": "KARYA" },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "description": "Subscription — pricing shared on a discovery call"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do my customers need to install anything?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. They keep ordering on WhatsApp exactly as they do now. ParchiBook only sits on your side, turning their message into a bill."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if it can't read an item?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "That line is flagged, not dropped. You tap once to add the item and its rate; from then on it's matched automatically — the more you use it, the smarter your catalog gets."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work in Hindi and Hinglish?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. It reads the way your customers actually type — \"2 kg aata\", \"doodh 1\", \"chai patti 250g\" — and matches on names and aliases you set in your own words."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does ParchiBook cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pricing is worked out on a quick discovery call and billed monthly on subscription. We're keeping public prices off the page while we onboard our first users."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "KARYA On the Bench",
+            "item": "https://kaarya-bench.pages.dev/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "ParchiBook",
+            "item": "https://sreenivas-sadhu-prabhakara.github.io/parchibook-site/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Primary">
   <a class="nav__brand" href="#top" aria-label="ParchiBook home">
     <span class="nav__mark" aria-hidden="true">
       <svg viewBox="0 0 32 32" width="28" height="28" role="img" aria-label="ParchiBook logo">
+        <title>ParchiBook logo</title>
         <rect x="4" y="3" width="20" height="26" rx="2.5" fill="#16A34A"/>
         <rect x="8" y="7" width="20" height="22" rx="2.5" fill="#FBFAF5" stroke="#14201A" stroke-width="1.4"/>
         <line x1="12" y1="13" x2="24" y2="13" stroke="#14201A" stroke-width="1.4" stroke-linecap="round"/>
@@ -30,7 +148,7 @@
     <a href="#features">Features</a>
     <a href="#pricing">Pricing</a>
   </div>
-  <a href="#pricing" class="btn btn--sm nav__cta">Start free</a>
+  <a href="mailto:sreeni.nintendo@gmail.com?subject=Discovery%20call%20—%20ParchiBook" class="btn btn--sm nav__cta">Book a discovery call</a>
 </nav>
 
 <main id="top">
@@ -49,7 +167,7 @@
         <a href="#pricing" class="btn btn--lg">Make my first bill</a>
         <a href="#how" class="btn btn--ghost btn--lg">See how it works</a>
       </div>
-      <p class="hero__meta">Rs 399/mo &middot; No new app for customers &middot; Works in Hindi, English &amp; Hinglish</p>
+      <p class="hero__meta">Subscription &middot; pricing on discovery &middot; No new app for customers &middot; Works in Hindi, English &amp; Hinglish</p>
     </div>
 
     <!-- SIGNATURE: chat -> bill transformation widget -->
@@ -105,10 +223,10 @@
   </header>
 
   <!-- 2. THE PROBLEM -->
-  <section class="section problem" id="problem">
+  <section class="section problem" id="problem" aria-labelledby="problem-title">
     <div class="section__head">
       <p class="eyebrow"><span class="eyebrow__dot"></span> The problem</p>
-      <h2 class="section__title">A busy shop runs on WhatsApp, a diary, and memory. All three leak.</h2>
+      <h2 class="section__title" id="problem-title">A busy shop runs on WhatsApp, a diary, and memory. All three leak.</h2>
     </div>
     <div class="problem__grid">
       <article class="leak">
@@ -135,7 +253,7 @@
   </section>
 
   <!-- 3. THE INSIGHT -->
-  <section class="section insight" id="insight">
+  <section class="section insight" id="insight" aria-label="The insight behind ParchiBook">
     <div class="insight__inner">
       <p class="eyebrow eyebrow--light"><span class="eyebrow__dot"></span> The insight</p>
       <p class="insight__quote">
@@ -151,10 +269,10 @@
   </section>
 
   <!-- 4. HOW IT WORKS -->
-  <section class="section how" id="how">
+  <section class="section how" id="how" aria-labelledby="how-title">
     <div class="section__head">
       <p class="eyebrow"><span class="eyebrow__dot"></span> How it works</p>
-      <h2 class="section__title">Paste the chat. Get a bill. Done in four steps.</h2>
+      <h2 class="section__title" id="how-title">Paste the chat. Get a bill. Done in four steps.</h2>
     </div>
     <ol class="steps">
       <li class="step">
@@ -181,10 +299,10 @@
   </section>
 
   <!-- 5. FEATURES -->
-  <section class="section features" id="features">
+  <section class="section features" id="features" aria-labelledby="features-title">
     <div class="section__head">
       <p class="eyebrow"><span class="eyebrow__dot"></span> What it does</p>
-      <h2 class="section__title">Everything the parchi used to do, minus the pen.</h2>
+      <h2 class="section__title" id="features-title">Everything the parchi used to do, minus the pen.</h2>
     </div>
     <div class="feat-grid">
       <article class="feat">
@@ -233,10 +351,10 @@
   </section>
 
   <!-- 6. PRODUCT PREVIEW -->
-  <section class="section preview" id="preview">
+  <section class="section preview" id="preview" aria-labelledby="preview-title">
     <div class="section__head section__head--center">
       <p class="eyebrow"><span class="eyebrow__dot"></span> Inside ParchiBook</p>
-      <h2 class="section__title">Your whole evening rush, on one screen.</h2>
+      <h2 class="section__title" id="preview-title">Your whole evening rush, on one screen.</h2>
     </div>
 
     <div class="screen" role="img" aria-label="ParchiBook dashboard mock-up showing today's orders, unmatched lines, and outstanding khata">
@@ -330,14 +448,15 @@
   </section>
 
   <!-- 7. PRICING -->
-  <section class="section pricing" id="pricing">
+  <section class="section pricing" id="pricing" aria-labelledby="pricing-title">
     <div class="price-card">
       <div class="price-card__l">
         <p class="eyebrow"><span class="eyebrow__dot"></span> Pricing</p>
-        <h2 class="price-card__title">One flat plan. No per-bill charge.</h2>
+        <h2 class="price-card__title" id="pricing-title">Simple monthly subscription. No per-bill charge.</h2>
         <p class="price-card__roi">
-          Recover it on day one. If clearer pricing and a khata that never forgets saves you just
-          <b>Rs 15 a day</b> in undercharges and missed udhaar, ParchiBook has already paid for itself &mdash;
+          We set pricing on a short discovery call and bill it as a simple monthly subscription &mdash; sized
+          to your shop. Early users get founder terms. If a khata that never forgets saves you just a few
+          undercharges and missed udhaar a day, ParchiBook has already earned its keep &mdash;
           with the delivery time saved on top.
         </p>
         <ul class="price-card__list">
@@ -348,20 +467,20 @@
         </ul>
       </div>
       <div class="price-card__r">
-        <span class="price-card__amt"><sup>Rs</sup>399</span>
-        <span class="price-card__per">per month</span>
-        <a href="#" class="btn btn--lg btn--block" aria-label="Start ParchiBook free for 14 days (demo)">Start 14 days free</a>
-        <p class="price-card__fine">No card needed &middot; Cancel anytime</p>
+        <span class="price-card__amt price-card__amt--text">Pricing on discovery</span>
+        <span class="price-card__per">Subscription basis</span>
+        <a href="mailto:sreeni.nintendo@gmail.com?subject=Discovery%20call%20—%20ParchiBook" class="btn btn--lg btn--block" aria-label="Book a discovery call about ParchiBook">Book a discovery call</a>
+        <p class="price-card__fine">Founder terms for early shops &middot; Cancel anytime</p>
       </div>
     </div>
   </section>
 
   <!-- 8. WHO IT'S FOR + FAQ -->
-  <section class="section audience" id="faq">
+  <section class="section audience" id="faq" aria-labelledby="audience-title">
     <div class="audience__grid">
       <div class="audience__who">
         <p class="eyebrow"><span class="eyebrow__dot"></span> Who it&rsquo;s for</p>
-        <h2 class="section__title">Built for the counter, not the boardroom.</h2>
+        <h2 class="section__title" id="audience-title">Built for the counter, not the boardroom.</h2>
         <p>ParchiBook is for the kirana and grocery shop owner who takes orders on WhatsApp, delivers around the neighbourhood, and keeps a khata for regulars. If your day already looks like that, nothing new to learn &mdash; just paste and bill.</p>
         <ul class="who-tags">
           <li>Kirana stores</li>
@@ -370,7 +489,7 @@
           <li>Home-delivery shops</li>
         </ul>
       </div>
-      <div class="faq">
+      <div class="faq" role="region" aria-label="Frequently asked questions">
         <details class="qa" open>
           <summary>Do my customers need to install anything?</summary>
           <p>No. They keep ordering on WhatsApp exactly as they do now. ParchiBook only sits on your side, turning their message into a bill.</p>
@@ -383,6 +502,10 @@
           <summary>Does it work in Hindi and Hinglish?</summary>
           <p>Yes. It reads the way your customers actually type &mdash; &ldquo;2 kg aata&rdquo;, &ldquo;doodh 1&rdquo;, &ldquo;chai patti 250g&rdquo; &mdash; and matches on names and aliases you set in your own words.</p>
         </details>
+        <details class="qa">
+          <summary>How much does ParchiBook cost?</summary>
+          <p>Pricing is worked out on a quick discovery call and billed monthly on subscription. We&rsquo;re keeping public prices off the page while we onboard our first users.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -390,7 +513,7 @@
 </main>
 
 <!-- 9. FOOTER -->
-<footer class="footer">
+<footer class="footer" aria-label="Site footer">
   <div class="footer__inner">
     <div class="footer__brand">
       <span class="nav__mark" aria-hidden="true">
@@ -406,7 +529,7 @@
       <p><a href="mailto:sreeni.nintendo@gmail.com">sreeni.nintendo@gmail.com</a></p>
     </div>
   </div>
-  <p class="footer__fine">&copy; 2026 ParchiBook &middot; Rs 399/mo &middot; Made for Indian kirana shops.</p>
+  <p class="footer__fine">&copy; 2026 ParchiBook &middot; Subscription &middot; pricing on discovery &middot; Made for Indian kirana shops.</p>
 </footer>
 
 <script src="app.js"></script>

@@ -325,6 +325,7 @@ a{ color:inherit; }
 .price-card__list li::before{ content:""; position:absolute; left:0; top:.35em; width:14px; height:8px; border-left:2.5px solid var(--accent); border-bottom:2.5px solid var(--accent); transform:rotate(-45deg); }
 .price-card__r{ display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:var(--tint); border-radius:16px; padding:clamp(1.5rem,3vw,2rem); }
 .price-card__amt{ font-size:clamp(3rem,8vw,4.2rem); font-weight:850; letter-spacing:-.04em; line-height:1; color:var(--ink); }
+.price-card__amt--text{ font-size:clamp(1.5rem,4vw,2.1rem); line-height:1.1; letter-spacing:-.02em; }
 .price-card__amt sup{ font-size:.32em; vertical-align:super; font-weight:700; margin-right:.15em; color:var(--ink-soft); }
 .price-card__per{ font-size:.9rem; color:var(--ink-soft); margin:.3rem 0 1.3rem; font-weight:600; }
 .price-card__fine{ font-size:.76rem; color:var(--ink-soft); margin:.7rem 0 0; }

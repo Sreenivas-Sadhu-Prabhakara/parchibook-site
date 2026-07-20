@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="ParchiBook — WhatsApp order to bill, in one tap. A KARYA build.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBFAF5"/>
+      <stop offset="1" stop-color="#E7F0E8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- accent top bar -->
+  <rect x="0" y="0" width="1200" height="14" fill="#16A34A"/>
+
+  <!-- brand row: logo mark + eyebrow -->
+  <g transform="translate(90,96)">
+    <rect x="0" y="0" width="52" height="66" rx="7" fill="#16A34A"/>
+    <rect x="12" y="11" width="52" height="58" rx="7" fill="#FBFAF5" stroke="#14201A" stroke-width="3.6"/>
+    <line x1="24" y1="27" x2="56" y2="27" stroke="#14201A" stroke-width="3.6" stroke-linecap="round"/>
+    <line x1="24" y1="39" x2="56" y2="39" stroke="#14201A" stroke-width="3.6" stroke-linecap="round"/>
+    <line x1="24" y1="51" x2="46" y2="51" stroke="#16A34A" stroke-width="4.4" stroke-linecap="round"/>
+    <text x="86" y="30" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="3" fill="#0F7A37">FOR KIRANA &amp; GROCERY SHOPS</text>
+    <text x="86" y="60" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="22" font-weight="600" fill="#46554D">Kirana billing app</text>
+  </g>
+
+  <!-- product name -->
+  <text x="88" y="322" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="132" font-weight="850" letter-spacing="-4" fill="#14201A">ParchiBook</text>
+
+  <!-- tagline -->
+  <text x="90" y="408" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="46" font-weight="700" fill="#16A34A">WhatsApp order to bill, in one tap.</text>
+
+  <!-- supporting line -->
+  <text x="90" y="464" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="27" font-weight="500" fill="#46554D">Itemized bills, delivery lists &amp; a shop khata</text>
+  <text x="90" y="500" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="27" font-weight="500" fill="#46554D">that never forgets — for Indian grocery shops.</text>
+
+  <!-- KARYA wordmark footer -->
+  <g transform="translate(90,545)">
+    <rect x="0" y="-4" width="12" height="12" rx="3" fill="#16A34A" transform="rotate(45 6 2)"/>
+    <text x="26" y="8" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="800" letter-spacing="6" fill="#14201A">KARYA</text>
+    <text x="150" y="8" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="22" font-weight="500" fill="#46554D">studio build</text>
+  </g>
+
+  <!-- decorative chat-to-receipt motif, right side -->
+  <g transform="translate(948,118) scale(0.92)" opacity="0.96">
+    <!-- chat bubble -->
+    <rect x="0" y="0" width="210" height="120" rx="20" fill="#16A34A"/>
+    <rect x="24" y="26" width="150" height="12" rx="6" fill="#FBFAF5" opacity="0.95"/>
+    <rect x="24" y="52" width="120" height="12" rx="6" fill="#FBFAF5" opacity="0.8"/>
+    <rect x="24" y="78" width="140" height="12" rx="6" fill="#FBFAF5" opacity="0.65"/>
+    <!-- arrow -->
+    <path d="M96 150 h18 M108 142 l10 8 -10 8" fill="none" stroke="#14201A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- receipt -->
+    <rect x="0" y="176" width="210" height="220" rx="14" fill="#FBFAF5" stroke="#14201A" stroke-width="3"/>
+    <rect x="24" y="204" width="120" height="11" rx="5" fill="#14201A"/>
+    <line x1="24" y1="238" x2="186" y2="238" stroke="#E7F0E8" stroke-width="6"/>
+    <rect x="24" y="256" width="90" height="10" rx="5" fill="#46554D"/>
+    <rect x="150" y="256" width="36" height="10" rx="5" fill="#16A34A"/>
+    <rect x="24" y="284" width="100" height="10" rx="5" fill="#46554D"/>
+    <rect x="150" y="284" width="36" height="10" rx="5" fill="#16A34A"/>
+    <rect x="24" y="312" width="80" height="10" rx="5" fill="#46554D"/>
+    <rect x="150" y="312" width="36" height="10" rx="5" fill="#16A34A"/>
+    <line x1="24" y1="342" x2="186" y2="342" stroke="#E7F0E8" stroke-width="6"/>
+    <rect x="24" y="360" width="60" height="14" rx="6" fill="#14201A"/>
+    <rect x="138" y="360" width="48" height="14" rx="6" fill="#16A34A"/>
+  </g>
+</svg>

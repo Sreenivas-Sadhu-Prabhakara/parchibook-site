@@ -2,7 +2,7 @@
 
 A standalone marketing / explainer website for **ParchiBook**.
 
-> **WhatsApp order to bill, in one tap.** — Rs 399/mo, for kirana & grocery shop owners.
+> **WhatsApp order to bill, in one tap.** — a simple monthly subscription, for kirana & grocery shop owners.
 
 This is **not** the product itself; it is a single-page site that makes the idea instantly
 clear to a non-technical shop owner and to an investor skimming for 30 seconds.
